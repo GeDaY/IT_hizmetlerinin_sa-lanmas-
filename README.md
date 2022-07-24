@@ -1,4 +1,4 @@
-# IT_hizmetlerinin_saglanmasi
+# IT hizmetlerinin saglanmasi
 
 page of the site with adaptive
 
