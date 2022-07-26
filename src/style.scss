@@ -12,7 +12,13 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   @include desktop {
+    max-width: 92%;
+  }
+  @include laptop {
     max-width: 95%;
+  }
+  @include phones {
+    max-width: 90%;
   }
 }
 
@@ -24,12 +30,53 @@ body {
   background: url('../imgs/bg-header.png') center / cover no-repeat;
   padding-top: 45px;
   @include desktop {
-    background: url('../imgs/bg-header.png') center / contain no-repeat;
+    background: url('../imgs/bg-header2.png') center / cover no-repeat;
+  }
+  @include tablets {
+    padding-top: 35px;
+    background: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0.208),
+        rgba(255, 255, 255, 0.823)
+      ),
+      url(../imgs/bg-header2.png) center / cover no-repeat;
+  }
+  @include phones {
+    background: linear-gradient(
+        to top,
+        rgba(255, 255, 255, 0.208),
+        rgba(255, 255, 255, 0.823)
+      ),
+      url(../imgs/bg-header3.png) center / cover no-repeat;
+  }
+
+  .nav {
+    @include tablets {
+      margin: 0 24px 30px 24px;
+      @include flex;
+    }
+    @include phones {
+      margin: 0 0 62px;
+      @include flex;
+    }
+
+    .menu {
+      display: none;
+      @include tablets {
+        display: block;
+      }
+    }
   }
 
   .nav__list {
     @include flex(row, flex-end, center, wrap);
     margin: 0 0 135px;
+    @include desktop {
+      margin: 0 0 96px;
+    }
+    @include tablets {
+      margin: 0;
+    }
 
     .nav__item {
       padding-right: 40px;
@@ -44,6 +91,14 @@ body {
           &:hover {
             background: #ff1e1e;
           }
+        }
+      }
+      &:first-child {
+        display: none;
+      }
+      @include tablets {
+        &:not(:last-child) {
+          display: none;
         }
       }
     }
@@ -62,12 +117,38 @@ body {
   .header__content {
     @include flex(column, center, flex-start, nowrap);
     max-width: 55%;
+    @include desktop {
+      margin-left: 44px;
+      max-width: 62%;
+    }
+    @include tablets {
+      margin-left: 24px;
+      max-width: 85%;
+    }
+    @include phones {
+      margin-left: 0;
+      max-width: 100%;
+    }
 
     .header__title {
       margin: 0 0 20px;
       font-weight: 800;
       font-size: 64px;
       line-height: 82px;
+      @include desktop {
+        font-size: 56px;
+        line-height: 74px;
+      }
+      @include laptop {
+        font-size: 48px;
+        line-height: 64px;
+      }
+      @include phones {
+        margin: 0 0 30px;
+        text-align: center;
+        font-size: 36px;
+        line-height: 48px;
+      }
     }
 
     .header__text {
@@ -75,12 +156,29 @@ body {
       font-size: 20px;
       line-height: 36px;
       letter-spacing: 0.2px;
+      @include desktop {
+        margin: 0 0 35px;
+        font-size: 16px;
+        line-height: 28px;
+      }
+      @include phones {
+        margin: 0 0 43px;
+        text-align: center;
+        font-size: 12px;
+        line-height: 23px;
+      }
     }
 
     .form {
       position: relative;
       width: 100%;
       margin: 0 0 148px;
+      @include desktop {
+        margin: 0 0 127px;
+      }
+      @include phones {
+        margin: 0 0 84px;
+      }
 
       .form__input {
         width: 75%;
@@ -104,6 +202,18 @@ body {
           letter-spacing: 0.2px;
           color: rgba(0, 0, 0, 0.4);
         }
+        @include laptop {
+          width: 85%;
+        }
+        @include tablets {
+          padding: 20px 133px 20px 21px;
+          width: 100%;
+          font-weight: 400;
+          font-size: 14px;
+          &::placeholder {
+            font-size: 14px;
+          }
+        }
       }
 
       .form__button {
@@ -123,6 +233,15 @@ body {
         &:hover {
           background: #ff1e1e;
         }
+        @include laptop {
+          padding: 13px 30px;
+          right: 16%;
+        }
+        @include tablets {
+          padding: 16px 19px;
+          right: 2%;
+          font-size: 14px;
+        }
       }
     }
   }
@@ -137,12 +256,27 @@ body {
 .kalite__content {
   padding: 120px 0 59px;
   text-align: center;
+  @include desktop {
+    padding-bottom: 91px;
+  }
+  @include tablets {
+    padding: 60px 0 10px;
+  }
 
   .kalite__title {
     margin-bottom: 30px;
     font-weight: 800;
     font-size: 36px;
     line-height: 49px;
+    @include tablets {
+      font-size: 28px;
+      line-height: 36px;
+    }
+    @include phones {
+      margin-bottom: 15px;
+      font-size: 24px;
+      line-height: 33px;
+    }
   }
 
   .kalite__text {
@@ -151,18 +285,74 @@ body {
     font-size: 24px;
     line-height: 40px;
     letter-spacing: 0.2px;
+    @include tablets {
+      margin-bottom: 70px;
+      font-size: 18px;
+      line-height: 28px;
+    }
+    @include phones {
+      margin-bottom: 40px;
+      max-width: 100%;
+      font-size: 12px;
+      line-height: 22px;
+    }
   }
 
   .kalite__cards {
     max-width: 1153px;
     @include flex(row, space-between, center, wrap);
+    @include desktop {
+      justify-content: space-evenly;
+    }
 
     .kalite__card {
       margin-bottom: 81px;
       max-width: 33%;
       transition: all 0.3s ease-in-out;
       &:hover {
-        transform: scale(1.3);
+        transform: scale(1.1);
+      }
+      @include desktop {
+        max-width: 40%;
+        &:nth-child(1) {
+          order: 1;
+        }
+        &:nth-child(2) {
+          order: 1;
+        }
+        &:nth-child(3) {
+          order: 3;
+        }
+        &:nth-child(4) {
+          order: 2;
+        }
+        &:nth-child(5) {
+          order: 2;
+        }
+        &:nth-child(6) {
+          order: 3;
+        }
+      }
+      @include phones {
+        max-width: 100%;
+        &:nth-child(1) {
+          order: 1;
+        }
+        &:nth-child(2) {
+          order: 1;
+        }
+        &:nth-child(3) {
+          order: 6;
+        }
+        &:nth-child(4) {
+          order: 4;
+        }
+        &:nth-child(5) {
+          order: 3;
+        }
+        &:nth-child(6) {
+          order: 5;
+        }
       }
 
       .card__title {
@@ -178,6 +368,9 @@ body {
         font-size: 18px;
         line-height: 28px;
         letter-spacing: 0.2px;
+        @include phones {
+          max-width: 100%;
+        }
       }
     }
   }
@@ -187,6 +380,12 @@ body {
   .test-bg {
     padding: 68px 0;
     background: $primary-color;
+    @include desktop {
+      padding: 33px 0;
+    }
+    @include tablets {
+      padding: 50px 0 40px;
+    }
   }
 
   .test__title {
@@ -197,6 +396,15 @@ body {
     line-height: 64px;
     font-feature-settings: 'liga' off;
     color: #ffffff;
+    @include tablets {
+      font-size: 42px;
+      line-height: 58px;
+    }
+    @include phones {
+      margin-bottom: 9px;
+      font-size: 32px;
+      line-height: 45px;
+    }
   }
 
   .test__text {
@@ -206,11 +414,22 @@ body {
     text-align: center;
     font-feature-settings: 'liga' off;
     color: #ffffff;
+    @include tablets {
+      margin-bottom: 55px;
+      font-size: 14px;
+      line-height: 32px;
+    }
   }
 
   .test__info-line {
     @include flex(row, space-around, center, nowrap);
     padding-bottom: 10px;
+    @include desktop {
+      justify-content: space-between;
+    }
+    @include phones {
+      @include flex(column, center, center, wrap);
+    }
   }
 
   .info-line__item-text {
@@ -220,29 +439,103 @@ body {
     line-height: 31px;
     font-feature-settings: 'liga' off;
     color: #ffffff;
+    @include desktop {
+      font-size: 14px;
+      line-height: 22px;
+    }
+    @include phones {
+      max-width: 50%;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+  }
+
+  .info-line__item-img {
+    @include desktop {
+      width: 28px;
+    }
+    @include phones {
+      width: 36px;
+      margin-bottom: 40px;
+      transform: rotate(90deg);
+    }
   }
 }
 
 .kalite-test {
   @include flex(row, space-between, stretch, wrap);
   padding: 160px 0 40px;
+  @include laptop {
+    padding: 120px 0 40px;
+    @include flex(column, space-around, center, wrap);
+  }
+  @include tablets {
+    padding: 90px 0 20px;
+  }
 
   .kalite-test__content {
-    max-width: 50%;
+    max-width: 45%;
     @include flex(column, space-between, flex-start, nowrap);
     height: 480px;
+    @include desktop {
+      height: 404px;
+    }
+    @include laptop {
+      max-width: 80%;
+      margin-bottom: 60px;
+      text-align: center;
+    }
+    @include tablets {
+      height: 350px;
+      max-width: 100%;
+    }
+    @include phones {
+      height: 400px;
+    }
+    &:nth-child(1) {
+      @include laptop {
+        order: 2;
+      }
+    }
 
     .kalite-test__title {
       font-weight: 700;
       font-size: 64px;
       line-height: 76px;
       color: #2e2e2e;
+      @include desktop {
+        font-size: 58px;
+        line-height: 60px;
+      }
+      @include laptop {
+        text-align: center;
+      }
+      @include tablets {
+        align-self: center;
+        font-size: 48px;
+        line-height: 60px;
+      }
+      @include phones {
+        font-size: 36px;
+        line-height: 42px;
+      }
     }
 
     .kalite-test__text {
       max-width: 90%;
       line-height: 32px;
       color: #808080;
+      @include desktop {
+        font-size: 14px;
+        line-height: 28px;
+      }
+      @include laptop {
+        max-width: 100%;
+      }
+      @include tablets {
+        font-size: 14px;
+        line-height: 28px;
+      }
     }
 
     .kalite-test__link {
@@ -257,17 +550,58 @@ body {
       &:hover {
         background: #ff1e1e;
       }
+      @include laptop {
+        align-self: center;
+      }
+      @include phones {
+        width: 100%;
+      }
     }
   }
 
   .kalite-test__img {
     margin-bottom: 120px;
+    @include desktop {
+      width: 424px;
+    }
+    @include tablets {
+      margin-bottom: 30px;
+    }
+    @include phones {
+      width: 100%;
+    }
+    &:nth-child(2) {
+      @include laptop {
+        order: 1;
+      }
+    }
+  }
+
+  .kalite-test-hide {
+    display: none;
+    @include laptop {
+      order: 2;
+    }
+  }
+  @include desktop {
+    .kalite-test-hide {
+      display: flex;
+    }
+    .kalite-test-show {
+      display: none;
+    }
   }
 }
 
 .referans-bg {
   padding: 59px 0 35px;
   background: #f4f5f7;
+  @include desktop {
+    padding: 45px 0 49px;
+  }
+  @include tablets {
+    padding: 40px 0 16px;
+  }
 
   .referans__title {
     margin-bottom: 5px;
@@ -277,28 +611,74 @@ body {
     text-align: center;
     font-feature-settings: 'salt' on, 'liga' off;
     color: #18191f;
+    @include desktop {
+      font-size: 42px;
+      line-height: 58px;
+    }
+    @include tablets {
+      font-size: 36px;
+      line-height: 42px;
+    }
+    @include phones {
+      margin-bottom: 14px;
+      font-size: 32px;
+      line-height: 38px;
+    }
   }
 
   .referans__text {
-    margin-bottom: 24px;
+    margin-bottom: 48px;
     font-weight: 500;
     font-size: 18px;
     line-height: 32px;
     text-align: center;
     font-feature-settings: 'salt' on, 'liga' off;
     color: #18191f;
+    @include tablets {
+      font-size: 16px;
+      line-height: 28px;
+    }
+    @include phones {
+      margin-bottom: 40px;
+      font-size: 12px;
+      line-height: 30px;
+    }
   }
 
   .referans__cards {
-    @include flex(row, center, center, wrap);
+    @include flex(row, center, center, nowrap);
+    @include phones {
+      @include flex(column, center, center, nowrap);
+    }
 
     .referans__card-group {
       margin: 0 12px;
+
+      @include laptop {
+        &:first-child,
+        &:last-child {
+          display: none;
+        }
+      }
+      @include tablets {
+        &:nth-child(3) {
+          display: none;
+        }
+      }
+      @include phones {
+        &:first-child,
+        &:nth-child(3) {
+          display: block;
+        }
+        &:nth-child(4) {
+          display: none;
+        }
+      }
     }
 
     .referans__card {
       @include flex(column, center, center, nowrap);
-      margin: 24px 0;
+      margin: 0 0 24px;
       width: 170px;
       height: 96px;
       background: #ffffff;
@@ -315,9 +695,22 @@ body {
 .bize {
   @include flex(column, center, center, wrap);
   padding: 160px 0;
+  @include laptop {
+    padding: 130px 0;
+  }
+  @include tablets {
+    padding: 100px 0;
+  }
+  @include phones {
+    padding: 90px 0 80px;
+  }
 
   .bize__img {
     margin-bottom: 10px;
+    @include tablets {
+      width: 90px;
+      margin-bottom: 20px;
+    }
   }
 
   .bize__title {
@@ -325,13 +718,32 @@ body {
     font-weight: 800;
     font-size: 48px;
     line-height: 32px;
+    @include tablets {
+      margin-bottom: 12px;
+      font-size: 38px;
+      line-height: 32px;
+    }
+    @include phones {
+      font-size: 36px;
+      line-height: 32px;
+    }
   }
 
   .bize__text {
     margin-bottom: 30px;
     font-weight: 500;
+    text-align: center;
     font-size: 18px;
     line-height: 32px;
+    @include tablets {
+      margin-bottom: 20px;
+      font-size: 16px;
+      line-height: 28px;
+    }
+    @include phones {
+      font-size: 14px;
+      line-height: 25px;
+    }
   }
 
   .bize__link {
@@ -346,6 +758,11 @@ body {
     &:hover {
       background: #ff1e1e;
     }
+    @include tablets {
+      padding: 11px 20px;
+      font-size: 16px;
+      line-height: 20px;
+    }
   }
 }
 
@@ -358,10 +775,33 @@ body {
 .footer-bg {
   background: $primary-color;
   padding: 80px 0 70px;
+  @include phones {
+    padding-bottom: 77px;
+  }
 
   .lists {
     @include flex(row, space-between, flex-start, wrap);
     margin-bottom: 26px;
+    @include laptop {
+      margin-bottom: 0;
+    }
+    @include tablets {
+      justify-content: space-around;
+    }
+    @include phones {
+      justify-content: space-between;
+    }
+
+    .list {
+      @include laptop {
+        margin: 0 15px 25px 0;
+      }
+      @include phones {
+        &:last-child {
+          margin-bottom: 5px;
+        }
+      }
+    }
 
     .list__item {
       padding-bottom: 24px;
@@ -385,15 +825,23 @@ body {
   }
 
   nav {
-    @include flex(row, space-between, center, nowrap);
+    @include flex(row, space-between, center, wrap);
 
     .nav__text {
+      margin-right: 15px;
       line-height: 32px;
       color: #ffffff;
+      @include phones {
+        order: 2;
+      }
     }
 
     .nav__list {
       @include flex(row, center, center, nowrap);
+      @include phones {
+        order: 1;
+        margin-bottom: 62px;
+      }
 
       .nav__item {
         margin-right: 16px;
